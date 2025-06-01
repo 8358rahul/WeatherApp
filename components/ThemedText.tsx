@@ -1,26 +1,22 @@
-import { StyleSheet, Text, type TextProps } from 'react-native';
+import { useTheme } from '@/context/ThemeContext';
+import { Text, type TextProps } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
-
-export type ThemedTextProps = TextProps & {
-  lightColor?: string;
-  darkColor?: string;
+export type ThemedTextProps = TextProps & { 
   type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
 };
 
 export function ThemedText({
-  style,
-  lightColor,
-  darkColor,
+  style, 
   type = 'default',
   ...rest
-}: ThemedTextProps) {
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+}: ThemedTextProps) { 
+  const {colors} = useTheme();
 
   return (
     <Text
       style={[
-        { color },
+        { color: colors.text },
         type === 'default' ? styles.default : undefined,
         type === 'title' ? styles.title : undefined,
         type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
@@ -33,28 +29,35 @@ export function ThemedText({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   default: {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: "14@ms",
+    lineHeight: "24@vs",
+    fontFamily: 'Inter-Regular',
   },
   defaultSemiBold: {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: "16@ms",
+    lineHeight: "24@vs",
     fontWeight: '600',
+    fontFamily: 'Inter-SemiBold',
   },
   title: {
-    fontSize: 32,
+    fontSize: "32@ms",
     fontWeight: 'bold',
-    lineHeight: 32,
+    lineHeight: "32@vs",
+    fontFamily: 'Inter-Bold',
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: "20@s",
     fontWeight: 'bold',
+    lineHeight: "30@vs",
+    fontFamily: 'Inter-Medium',
   },
   link: {
-    lineHeight: 30,
-    fontSize: 16,
+    lineHeight: "30@vs",
+    fontSize: "16@ms",
     color: '#0a7ea4',
+    textDecorationLine: 'underline',
+    fontFamily: 'Inter-Regular',
   },
 });

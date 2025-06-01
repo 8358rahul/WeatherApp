@@ -28,7 +28,7 @@ export default function SearchBar({ value, onChangeText }: SearchBarProps) {
       backgroundColor: colors.card,
       borderRadius: "20@ms",
       paddingHorizontal: "20@mvs",
-      paddingVertical: "12@vs",
+      paddingVertical: "8@vs",
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 5 },
       shadowOpacity: 0.1,

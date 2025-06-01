@@ -18,6 +18,7 @@ export default function ThemeToggle() {
         thumbColor={ isDark ? colors.text : colors.primary}
         trackColor={{ false: colors.border, true: colors.primary }} 
       style={styles.switch}
+      
       />
     </View>
   );
@@ -30,6 +31,6 @@ export default function ThemeToggle() {
       // justifyContent: 'space-between', 
     }, 
     switch: {
-      transform: [{ scaleX:0.8 }, { scaleY:0.8 }], 
+      transform: [{ scaleX:1.1 }, { scaleY:1.1 }],  
     },
   });

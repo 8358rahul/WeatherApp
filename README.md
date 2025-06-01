@@ -18,6 +18,7 @@ A weather application built with React Native and Expo that displays current wea
 - Node.js (v14 or later)
 - Expo CLI (`npm install -g expo-cli`)
 - VisualCrossing Weather API key (free tier available)
+- You need create Weather API and add it into .env and use it
 
 ## Setup
 

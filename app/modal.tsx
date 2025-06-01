@@ -1,14 +1,15 @@
 import { useTheme } from '@/context/ThemeContext';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
+import { ms, ScaledSheet } from 'react-native-size-matters';
 
 export default function ErrorModal() {
   const router = useRouter();
   const { error } = useLocalSearchParams();
   const { colors } = useTheme();
 
-  const styles = StyleSheet.create({
+  const styles = ScaledSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
@@ -18,8 +19,8 @@ export default function ErrorModal() {
     modal: {
       width: '80%',
       backgroundColor: colors.card,
-      borderRadius: 20,
-      padding: 25,
+      borderRadius: "20@ms",
+      padding: "25@ms",
       alignItems: 'center',
       shadowColor: '#000',
       shadowOffset: {
@@ -34,21 +35,21 @@ export default function ErrorModal() {
       marginBottom: 15,
     },
     title: {
-      fontSize: 20,
+      fontSize: "20@ms",
       fontWeight: 'bold',
       marginBottom: 15,
       color: colors.text,
       textAlign: 'center',
     },
     message: {
-      fontSize: 16,
+      fontSize: "16@ms",
       marginBottom: 20,
       color: colors.textSecondary,
       textAlign: 'center',
     },
     button: {
       borderRadius: 10,
-      padding: 12,
+      padding: "12@ms",
       width: '100%',
       backgroundColor: colors.primary,
       alignItems: 'center',
@@ -56,7 +57,7 @@ export default function ErrorModal() {
     buttonText: {
       color: 'white',
       fontWeight: 'bold',
-      fontSize: 16,
+      fontSize: "16@ms",
     },
   });
 
@@ -65,7 +66,7 @@ export default function ErrorModal() {
       <View style={styles.modal}>
         <MaterialCommunityIcons
           name="alert-circle-outline"
-          size={48}
+          size={ms(48)}
           color={colors.primary}
           style={styles.icon}
         />

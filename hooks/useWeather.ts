@@ -1,13 +1,14 @@
- 
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
+import { Keyboard } from 'react-native';
 import { fetchWeather } from '../services/weather';
 import { useDebounce } from './useDebounce';
 
 export function useWeather() {
   const router = useRouter();
-  const [weatherData, setWeatherData] = useState<any>(null); 
+  const [weatherData, setWeatherData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
@@ -31,20 +32,27 @@ export function useWeather() {
   useEffect(() => {
     if (error) {
       router.push({ pathname: '/modal', params: { error } });
-      setError(null);  
+      setError(null);
     }
   }, [error]);
 
   const fetchWeatherData = useCallback(async (city: string) => {
     if (!city.trim()) return;
-    
+
     try {
       setLoading(true);
       setError(null);
-      const data = await fetchWeather(city);
-      setWeatherData(data);
-      await AsyncStorage.setItem('lastWeatherData', JSON.stringify(data));
-    } catch (err:any) {
+      const data = await fetchWeather(city); 
+      if (data) {
+        setWeatherData(data);
+        await AsyncStorage.setItem('lastWeatherData', JSON.stringify(data)); 
+        Keyboard.dismiss();
+      }else{
+        setWeatherData(null);
+        setError('No weather data found for this city');
+      }
+
+    } catch (err: any) {
       let errorMessage = 'Failed to fetch weather data';
       if (err.response) {
         if (err.response.status === 400) {

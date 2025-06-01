@@ -8,7 +8,8 @@
     "scheme": "weatherapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-     "splash": {    
+    "jsEngine": "hermes",
+    "splash": {
       "image": "./assets/images/splash.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
@@ -18,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/splash.jpg",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
@@ -42,6 +43,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "3e5184bb-fdf5-46b1-b552-e60f2ad4d881"
+      }
     }
   }
 }

@@ -59,8 +59,8 @@ export default function HomeScreen() {
         ) : weatherData ? (
           <WeatherCard weatherData={weatherData} />
         ) : (
-          <View style={{ alignItems: 'center', marginTop: vs(150) }}>
-            <ThemedText type='defaultSemiBold'>
+          <View style={{ alignItems: 'center', marginTop: vs(180) }}>
+            <ThemedText type='defaultSemiBold' style={{ color: "#fff" }}>
               Search for a city to see weather
             </ThemedText>
           </View>

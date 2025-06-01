@@ -84,7 +84,7 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
     <Animated.View style={[styles.card, { opacity: fadeAnim }]}>
       <View style={styles.header}>
         <View>
-          <ThemedText type='subtitle'>{weatherData.resolvedAddress}</ThemedText>
+          <ThemedText type='subtitle'>{weatherData?.resolvedAddress}</ThemedText>
           <ThemedText type='default' style={styles.date}>
             {new Date().toLocaleDateString('en-US', { 
               weekday: 'long', 
@@ -93,19 +93,19 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
             })}
           </ThemedText>
         </View>
-        <WeatherIcon icon={current.icon} size={ms(40)} />
+        <WeatherIcon icon={current?.icon} size={ms(40)} />
       </View>
 
       <View style={styles.currentWeather}>
         <View>
           <View style={styles.tempContainer}>
-            <ThemedText type='title'>{Math.round(current.temp)}</ThemedText>
+            <ThemedText type='title'>{Math.round(current?.temp)}</ThemedText>
             <ThemedText type='subtitle' style={styles.unit}>°C</ThemedText>
           </View>
-          <ThemedText type='defaultSemiBold' style={styles.description}>{current.conditions}</ThemedText>
+          <ThemedText type='defaultSemiBold' style={styles.description}>{current?.conditions}</ThemedText>
         </View>
         
-        <WeatherIcon icon={current.icon} size={ms(100)}/>
+        <WeatherIcon icon={current?.icon} size={ms(100)}/>
       </View>
 
       <View style={styles.details}>
@@ -115,7 +115,7 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
             size={ms(22)} 
             color={colors.textSecondary} 
           />
-          <ThemedText type='defaultSemiBold' style={styles.detailText}>Humidity: {current.humidity}%</ThemedText>
+          <ThemedText type='defaultSemiBold' style={styles.detailText}>Humidity: {current?.humidity}%</ThemedText>
         </View>
         
         <View style={styles.detailItem}>
@@ -124,7 +124,7 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
             size={ms(22)} 
             color={colors.textSecondary} 
           />
-          <ThemedText  type='defaultSemiBold' style={styles.detailText}>Wind: {Math.round(current.windspeed * 3.6)} km/h</ThemedText>
+          <ThemedText  type='defaultSemiBold' style={styles.detailText}>Wind: {Math.round(current?.windspeed * 3.6)} km/h</ThemedText>
         </View>
         
         <View style={styles.detailItem}>
@@ -133,7 +133,7 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
             size={ms(22)} 
             color={colors.textSecondary} 
           />
-          <ThemedText type='defaultSemiBold' style={styles.detailText}>Pressure: {current.pressure} hPa</ThemedText>
+          <ThemedText type='defaultSemiBold' style={styles.detailText}>Pressure: {current?.pressure} hPa</ThemedText>
         </View>
         
         <View style={styles.detailItem}>
@@ -142,7 +142,7 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
             size={ms(22)} 
             color={colors.textSecondary} 
           />
-          <ThemedText type='defaultSemiBold' style={styles.detailText}>Sunrise: {current.sunrise}</ThemedText>
+          <ThemedText type='defaultSemiBold' style={styles.detailText}>Sunrise: {current?.sunrise}</ThemedText>
         </View>
         
         <View style={styles.detailItem}>
@@ -151,7 +151,7 @@ export default function WeatherCard({ weatherData }: WeatherCardProps) {
             size={ms(22)} 
             color={colors.textSecondary} 
           />
-          <ThemedText type='defaultSemiBold' style={styles.detailText}>Sunset: {current.sunset}</ThemedText>
+          <ThemedText type='defaultSemiBold' style={styles.detailText}>Sunset: {current?.sunset}</ThemedText>
         </View>
         
         <View style={styles.detailItem}>
